@@ -1,36 +1,43 @@
 
 $(function() {$("#add").on("click", addItem);});  
 $(function() {$("#hide").on("click", toggleList);});  
-$(function() {$("#item").keypress(function(event){
+$(function() {$("#item").keypress(function(event)
+{
   var keycode = event.key;
-  if(keycode == 'Enter'){
+  if(keycode == 'Enter')
+  {
     addItem();
   }
-});});  
-$(()=>{$("#listStart").on("click", handleDeleteItem)});
-$(()=>{$("#load").on("click", loadList($("#presList").children("option:selected").val()))});
-
-function loadList(selectedItem){
-
-alert(selectedItem);
+})});  
+//$(()=>{$("#listStart").on("click", handleDeleteItem)});
+$(()=>{$("#load").on("click", loadList)});
 
 
-//   $.get("./.php", function( data ) {
-//     $(data).each(function( index, element ) {
-//         $("#result").append($("<p/>").append(element));
-//     })
-// });
+
+function loadList(){
+  console.log("clicked load button"); 
+  //$("#preList").children("option.selected")
+  
+  $.get("./requestHandlerJson.php", function( data ) {
+    console.log(typeof data);
+    data.forEach(element => {
+               
+        $("ol").append("<li>" + element + "</li>").css("display", "none").show("slow ");
+        $("li:contains('" + element + "')").on("click",handleDeleteItem);
+    });
+});
 }
 
 function toggleList(){
+  console.log("hidden");
   $("#sortable").toggle();
   if ($("#hide").html() == "hide")
   {
     $("#hide").html("show");
   }
-  else{
-    $("#hide").html("hide");
-  }
+  // else{
+  //   $("#hide").html("hide");
+  // }
 }
 
 
@@ -42,8 +49,7 @@ function addItem() {
         console.log(e);       
         $("ol").append("<li>" + e + "</li>").css("display", "none").show("slow ");
         // instead of class add eventlistener?
-        $("li:contains('" + e + "')").on("click",
-            handleDeleteItem);
+        $("li:contains('" + e + "')").on("click",handleDeleteItem);
         $("#item").val("");
         console.log("element added");
         }
@@ -53,7 +59,7 @@ function addItem() {
     }
 
 function handleDeleteItem () {
-    console.log(this);
+   
     let conf = confirm("Sure you wanna delete this element?");
     if (conf)
     {
