@@ -8,6 +8,19 @@ $(function() {$("#item").keypress(function(event){
   }
 });});  
 $(()=>{$("#listStart").on("click", handleDeleteItem)});
+$(()=>{$("#load").on("click", loadList($("#presList").children("option:selected").val()))});
+
+function loadList(selectedItem){
+
+alert(selectedItem);
+
+
+//   $.get("./.php", function( data ) {
+//     $(data).each(function( index, element ) {
+//         $("#result").append($("<p/>").append(element));
+//     })
+// });
+}
 
 function toggleList(){
   $("#sortable").toggle();
