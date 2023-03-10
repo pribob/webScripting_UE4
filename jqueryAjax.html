@@ -35,9 +35,22 @@
 
     <h1>Click on the element to delete it.</h1>
     <h1>Click 'add' or press the enter-key to append text from the input.</h1>
-    <input type="text" id="item">
-    <button id="add">add</button>
-    <button id="hide">hide</button>
+    
+    <div class="enterList">
+        <input type="text" id="item">
+        <button id="add">add</button>
+        <button id="hide">hide</button>
+    </div>
+    <div class="loadList">
+        <label for="cars">Choose a car:</label>
+
+        <select name="preList" id="preList">
+        <option value="homework">Lern_ToDo</option>
+        <option value="cleaning">Putzen_ToDo</option>
+        <option value="shopping">Einkaufs_ToDo</option>
+        </select>
+        <button>Laden</button>
+    </div>
     
     <ol id="sortable">
         

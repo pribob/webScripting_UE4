@@ -29,7 +29,7 @@ function addItem() {
         console.log(e);       
         $("ol").append("<li>" + e + "</li>").css("display", "none").show("slow ");
         // instead of class add eventlistener?
-        $("li:contains('" + e + "')").click(
+        $("li:contains('" + e + "')").on("click",
             handleDeleteItem);
         $("#item").val("");
         console.log("element added");
