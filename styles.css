@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    justify-content: center;
+}
+
+#sortable li {
+    padding:5px;
+    background-color: lightcoral;
+    margin: 4px;
+    border: 2px solid black;
+    width: fit-content;
+    cursor:pointer;
+}
+input{
+    margin-right: 10px;
+}
+
+button {
+    background-color: blue;
+    font-size: larger;
+    border-radius: 20%;
+
+}
+
+#sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+#sortable li span { position: absolute; margin-left: -1.3em; }
+
