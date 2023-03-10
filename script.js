@@ -15,11 +15,13 @@ $(()=>{$("#load").on("click", loadList)});
 
 
 function loadList(){
-  console.log("clicked load button"); 
-  //$("#preList").children("option.selected")
   
-  $.get("./requestHandlerJson.php", function( data ) {
-    console.log(typeof data);
+  let selected = $("#preList").children("option:selected").val();
+  console.log(selected);
+  
+  $.post("./requestHandlerJson.php",{"filename":selected},function( data ) {
+    // console.log(typeof data);
+    // console.log(data);
     data.forEach(element => {
                
         $("ol").append("<li>" + element + "</li>").css("display", "none").show("slow ");
