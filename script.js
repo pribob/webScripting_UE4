@@ -19,15 +19,18 @@ function loadList(){
   let selected = $("#preList").children("option:selected").val();
   console.log(selected);
   
-  $.post("./requestHandlerJson.php",{"filename":selected},function( data ) {
-    // console.log(typeof data);
-    // console.log(data);
+  $.ajax({
+    type:"POST",
+    url:"./requestHandlerJson.php",
+    data:{"filename":selected},
+    success:function( data ) {
+     
     data.forEach(element => {
                
         $("ol").append("<li>" + element + "</li>").css("display", "none").show("slow ");
         $("li:contains('" + element + "')").on("click",handleDeleteItem);
     });
-});
+}});
 }
 
 function toggleList(){
